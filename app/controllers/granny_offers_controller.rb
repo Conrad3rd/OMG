@@ -1,0 +1,2 @@
+class GrannyOffersController < ApplicationController
+end

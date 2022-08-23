@@ -43,6 +43,6 @@
   padding: 16px;
 }
 
-.card-product :hover {
-  height: 180px;
+.card-product:hover {
+  border: solid 2px blueviolet;
 }

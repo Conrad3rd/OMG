@@ -1,4 +1,5 @@
 class GrannyOffersController < ApplicationController
+
   before_action :set_granny_offer, only: [:show, :edit, :update, :destroy]
   def index
     @granny_offers = GrannyOffer.all

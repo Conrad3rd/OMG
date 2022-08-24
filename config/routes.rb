@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   # get 'profiles/index'
-  get 'profile/show', to: "profiles#show"
   devise_for :users
   root to: "pages#home"
   resources :granny_offers
@@ -8,7 +7,8 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
+  resources :users, only: [:update]
   resources :bookings
   resources :granny_offers
-  # resources :profiles
+  resources :profiles, only: [:show, :edit]
 end

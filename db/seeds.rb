@@ -1,10 +1,9 @@
 require "open-uri"
 
 puts 'Cleaning database...'
+GrannyOffer.destroy_all
 User.destroy_all
 Booking.destroy_all
-GrannyOffer.destroy_all
-
 
 # User.create(email: "oma@gmail.com", password: "123456", first_name: "Esther", last_name: "Wynder", address: "123 Fakestreet", age: 99, granny: true)
 # Booking.create(start_date: "20220823", end_date: "20220824", status: true)
@@ -28,12 +27,11 @@ granny_photos = ["https://images.pexels.com/photos/5333753/pexels-photo-5333753.
 
 granny_photos.each do |granny_photo|
   file = URI.open(granny_photo)
-  full_name =  Faker::FunnyName.two_word_name.split
-  user = User.new(first_name: full_name[0],
-                  last_name: full_name[1],
+  user = User.new(first_name: Faker::Name.female_first_name,
+                  last_name: Faker::Name.last_name ,
                   age: rand(54..88),
                   address: Faker::Address.city,
-                  introduction: Faker::Quote.most_interesting_man_in_the_world,
+                  introduction: Faker::TvShows::FamilyGuy.quote,
                   email: Faker::Internet.email,
                   password: 123456 ,
                   granny: true

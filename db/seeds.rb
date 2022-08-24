@@ -5,7 +5,6 @@ GrannyOffer.destroy_all
 User.destroy_all
 Booking.destroy_all
 
-
 # User.create(email: "oma@gmail.com", password: "123456", first_name: "Esther", last_name: "Wynder", address: "123 Fakestreet", age: 99, granny: true)
 # Booking.create(start_date: "20220823", end_date: "20220824", status: true)
 

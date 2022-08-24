@@ -11,8 +11,9 @@
       <p>my age <%=  current_user.age %></p>
       <p>my introduction <%=  current_user.introduction %></p>
       <p><%=  current_user.granny %></p>
-      <%= cl_image_tag(current_user.photo.key, :width => 200, :crop => "pad") %>
+      <% if current_user.photo.attached? %>
+        <%= cl_image_tag(current_user.photo.key, :width => 200, :crop => "pad") %>
+      <% end %>
       <%= link_to 'Complete your profile', edit_profile_path(@user), class: "btn btn-primary" %>
     </div>
 </div>
-

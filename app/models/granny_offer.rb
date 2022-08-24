@@ -3,4 +3,5 @@ class GrannyOffer < ApplicationRecord
 
   validates :hug_amount, presence: true
   validates :available, presence: true
+  
 end

@@ -1,12 +1,9 @@
-<h1>granny_offers/index.html.erb</h1>
-
-
 <div class="container">
   <div class="row">
     <div>
         <h3>HEY! I AM <%= @granny_offer.user.first_name %> </h3>
         <h3>FROM <%= @granny_offer.user.address %> </h3>
-          <%= @granny_offer.user.available %><
+          <%#= @granny_offer.user.available %><
             <h3>MEET ME</h3>
           <%= @granny_offer.user.introduction %><
 
@@ -15,8 +12,10 @@
           <%= @granny_offer.details %>
         <h3>REWARD ME WITH <%= @granny_offer.hug_amount%> HUGS </h3>
 
-        <%= simple_form_for @granny_offer do |f| %>
-        <%= f.submit "BOOK <%= @granny_offer.user.first_name %>'S OFFER", class: 'btn btn-primary' %>
+        <%= simple_form_for([@granny_offer, @booking]) do |f| %>
+        <%= f.input :start_date %>
+        <%= f.input :end_date %>
+        <%= f.submit "BOOK #{@granny_offer.user.first_name}'S OFFER" %>
         <% end %>
     </div>
   </div>

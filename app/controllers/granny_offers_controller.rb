@@ -1,6 +1,6 @@
 class GrannyOffersController < ApplicationController
 
-  before_action :set_granny_offer, only: %i[show edit update destroy]
+  before_action :set_offer, only: %i[show edit update destroy]
   def index
     # Preventing SQL Injection and Database error for
     # unknown characters
@@ -12,6 +12,13 @@ class GrannyOffersController < ApplicationController
   end
 
   def show
+    @booking = Booking.new
+
+    if @booking.save
+        redirect_to user_path(@user), notice: "Booked!"
+      else
+        render :show, status: :unprocessable_entity
+      end
   end
 
   def new
@@ -20,6 +27,7 @@ class GrannyOffersController < ApplicationController
 
   def create
     @granny_offer = GrannyOffer.new(granny_offer_params)
+    @granny_offer.user = current_user
 
     if @granny_offer.save
       redirect_to granny_offer_path(@granny_offer), notice: "Offer was created!"
@@ -48,6 +56,6 @@ class GrannyOffersController < ApplicationController
   end
 
   def granny_offer_params
-    params.require(:granny_offer).permit(:hug_amount, :available)
+    params.require(:granny_offer).permit(:hug_amount, :available, :details, :additional)
   end
 end

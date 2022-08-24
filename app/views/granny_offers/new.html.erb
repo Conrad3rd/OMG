@@ -4,8 +4,8 @@
       <div class="bg-white rounded p-3 shadow">
 
         <h3>CREATE A NEW OFFER</h3>
-        
-        <%= simple_form_for @granny_offer do |f| %>
+
+        <%= simple_form_for @user do |f| %>
           <%= f.input :availability, as: :radio_buttons %>
           <%= f.input :details, as: :text %>
           <%= f.submit class: 'btn btn-flat' %>

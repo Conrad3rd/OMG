@@ -1,21 +1,17 @@
 class UsersController < ApplicationController
-  # def new
-  #   @user = User.new
-  # end
 
-  # def create
-  #   @user = User.new(user_params)
+  def update
+    @user.update(user_params)
+    if @user.save
+      redirect_to granny_offer_path(@granny_offer), notice: "Offer was created!"
+    else
+      render :new, status: :unprocessable_entity
+    end
+  end
 
-  #   if @user.save
-  #     redirect_to user_path(@user)
-  #   else
-  #     render :new, status: :unprocessable_entity
-  #   end
-  # end
+  private
 
-  # private
-
-  # def user_params
-  #   params.require(:user).permit(:first_name, :last_name, :address, :)
-  # end
+  def user_params
+  params.require(:user).permit(:first_name, :last_name, :address, :age)
+  end
 end

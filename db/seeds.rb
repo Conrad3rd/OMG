@@ -43,7 +43,8 @@ granny_photos.each do |granny_photo|
 
   granny_offer = GrannyOffer.new(hug_amount: rand(1..30),
                                 available: true,
-                                user: user)
+                                user: user,
+                                details: Faker::TvShows::FamilyGuy.quote)
   granny_offer.save!
   puts " Granny_offer with #{granny_offer.id} was successfully saved."
 

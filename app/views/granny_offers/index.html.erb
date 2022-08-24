@@ -9,7 +9,9 @@
     <% @granny_offers.each do |granny_offer|%>
       <div class="col-4">
         <div class="card-product">
+        <% if granny_offer.user.photo.attached? %>
           <%= cl_image_tag granny_offer.user.photo.key %>
+        <% end %>
           <div class="card-product-infos">
             <h2><%= granny_offer.user.first_name %></h2>
             <h3> <%= granny_offer.user.address %></h3>

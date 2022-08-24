@@ -1,4 +1,4 @@
-<div class="container py-5">
+<div class="container p-20">
       <div class="bg-white rounded p-3 shadow">
 
         <h3>CREATE A NEW OFFER</h3>
@@ -9,7 +9,13 @@
         <p> - I can come once a week and read some childrensbook with the kids</p>
         <p> - I`m an excellent knidding teacher </p>
         <p> - Would love to go to waterskiing with your teens</p>
-          <%= f.input :details, as: :text %>
+          <%= f.input :details, as: :text, prompt: "For example:
+
+- I can come once a week and read some childrensbook with the kids
+
+- I`m an excellent knidding teacher
+
+- Would love to go to waterskiing with your teens" %>
         <h4> HOW MANY HUGS WOULD YOU LIKE TO RECEIVE? </h4>
           <%= f.input :hug_amount %>
          <h4> ANYTHING ELSE? </h4>

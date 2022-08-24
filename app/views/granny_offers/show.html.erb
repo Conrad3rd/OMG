@@ -1,6 +1,7 @@
 <div class="container">
   <div class="row">
     <div>
+    <div> <%= @granny_offer.user.photo %> </div>
         <h3>HEY! I AM <%= @granny_offer.user.first_name %> </h3>
         <h3>FROM <%= @granny_offer.user.address %> </h3>
           <%#= @granny_offer.user.available %><
@@ -15,7 +16,7 @@
         <%= simple_form_for([@granny_offer, @booking]) do |f| %>
         <%= f.input :start_date %>
         <%= f.input :end_date %>
-        <%= f.submit "BOOK #{@granny_offer.user.first_name}'S OFFER" %>
+        <%= f.submit "BOOK #{@granny_offer.user.first_name}'S OFFER"%>
         <% end %>
     </div>
   </div>

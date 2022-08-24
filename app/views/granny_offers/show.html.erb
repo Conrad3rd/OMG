@@ -1,34 +1,23 @@
-# booking form in this file
-          # @user.photo
-          # @user.first_name
-          # @user.location
-          # @user.introduction
-
 <div class="container">
   <div class="row">
-    <div class="col-xs-12 col-sm-10 col-sm-offset-1">
-      <h1><%= @user.photo %></h1>
-      <table class="table table-bordered">
-        <tbody>
-          <tr>
-            <th scope="row">Name</th>
-            <td><%= @user.first_name %></td>
-          </tr>
-          <tr>
-            <th scope="row">Available</th>
-            <td><%= @user.availability %></td>
-          </tr>
-          <tr>
-            <th scope="row">Location</th>
-            <td><%= @user.location%></td>
-          </tr>
-          <tr>
-            <th scope="row">Introduction</th>
-            <td><%= @user.introduction %></td>
-          </tr>
-          <tr>
-            <th scope="row">Details</th>
-            <td><%= @user.details %></td>
-          </tr>
-        </tbody>
-      </table>
+    <div>
+    <div> <%= @granny_offer.user.photo %> </div>
+        <h3>HEY! I AM <%= @granny_offer.user.first_name %> </h3>
+        <h3>FROM <%= @granny_offer.user.address %> </h3>
+          <%#= @granny_offer.user.available %><
+            <h3>MEET ME</h3>
+          <%= @granny_offer.user.introduction %><
+
+
+        <h3>MY OFFER</h3>
+          <%= @granny_offer.details %>
+        <h3>REWARD ME WITH <%= @granny_offer.hug_amount%> HUGS </h3>
+
+        <%= simple_form_for([@granny_offer, @booking]) do |f| %>
+        <%= f.input :start_date %>
+        <%= f.input :end_date %>
+        <%= f.submit "BOOK #{@granny_offer.user.first_name}'S OFFER"%>
+        <% end %>
+    </div>
+  </div>
+</div>

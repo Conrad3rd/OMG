@@ -8,4 +8,5 @@ Rails.application.routes.draw do
   # root "articles#index"
   resources :bookings
   resources :granny_offers
+  resources :profiles, only: [:show, :edit, :update]
 end

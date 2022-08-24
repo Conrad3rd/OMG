@@ -1,12 +1,17 @@
 class GrannyOffersController < ApplicationController
 
-  before_action :set_granny_offer, only: [:show, :edit, :update, :destroy]
+  before_action :set_granny_offer, only: %i[show edit update destroy]
   def index
+    # Preventing SQL Injection and Database error for
+    # unknown characters
+    # if params[:query].present?
+    #   @query = params[:query]
+    #   @granny_offers = GrannyOffer.where("location LIKE ?", "%#{params[:query]}%")
+    # else
     @granny_offers = GrannyOffer.all
   end
 
   def show
-    @granny_offer = GrannyOffer.new
   end
 
   def new

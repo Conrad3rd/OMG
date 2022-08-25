@@ -13,6 +13,7 @@ class GrannyOffersController < ApplicationController
 
   def show
     @booking = Booking.new
+    # @granny_offer = GrannyOffer.find(params[:id])
 
     if @booking.save
         redirect_to user_path(@user), notice: "Booked!"

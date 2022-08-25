@@ -1,10 +1,11 @@
-<div class="container">
+<div class="container" >
 <h1>Complete your profile</h1>
   <%= simple_form_for @user do |f| %>
     <%= f.input :first_name, as: :string %>
     <%= f.input :last_name, as: :string %>
     <%= f.input :address, as: :text %>
     <%= f.input :age, as: :string %>
+    <%= f.input :introduction, as: :text %>
     <%= f.input :photo, as: :file %>
     <%= f.submit class: 'btn btn-primary' %>
   <% end %>

@@ -12,16 +12,16 @@
   </head>
 
   <body>
-  <div class="wrapper">
-    <%= render "shared/navbar" %>
-    <div id="content-goes-here"> <!-- the id here is just to remind you -->
-      <%# <p class="notice"><%= notice %>
-      <%# <p class="alert"><%= alert %>
-      <%= yield %>
+    <div class="wrapper">
+      <%= render "shared/navbar" %>
+      <div id="content-goes-here" class="flex-grow-1"> <!-- the id here is just to remind you -->
+        <%# <p class="notice"><%= notice %>
+        <%# <p class="alert"><%= alert %>
+        <%= yield %>
+      </div>
+      <div id="footer-goes-here"> <!-- the id here is just to remind you -->
+        <%= render 'shared/footer' %>
+      </div>
     </div>
-    <div id="footer-goes-here"> <!-- the id here is just to remind you -->
-      <%= render 'shared/footer' %>
-    </div>
-  </div>
   </body>
 </html>

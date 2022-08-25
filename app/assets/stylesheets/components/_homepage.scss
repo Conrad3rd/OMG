@@ -1,5 +1,5 @@
 .banner {
-  background-size: 100%;
+  background-size: cover;
   background-position: inherit;
   padding: 212px 0;
   height: 100%;
@@ -33,6 +33,5 @@
 }
 
 #banner-container {
-  // display:flex;
   flex-wrap: wrap;
 }

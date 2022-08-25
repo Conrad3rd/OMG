@@ -8,9 +8,17 @@
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   // display: flex;
   align-items: center;
-  margin-bottom: 10px;
-  margin-top: 10px;
+  margin-bottom: 50px;
+  margin-top: 50px;
   border-radius: 10px;
-  padding-left: 5px;
-  padding-bottom: 10px;
+  // padding-left: 5px;
+  // padding-bottom: 10px;
+  padding: 30px;
+}
+
+
+ul.no-bullets {
+  list-style-type: none; /* Remove bullets */
+  padding: 0; /* Remove padding */
+  margin: 0; /* Remove margins */
 }

@@ -12,5 +12,5 @@ Rails.application.routes.draw do
   resources :users, only: [:update]
   resources :bookings
   resources :granny_offers
-  resources :profiles, only: [:show, :edit]
+  resources :profiles, only: %i[show edit]
 end

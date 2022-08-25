@@ -1,16 +1,16 @@
-<div class="card-granny_offer">
+<div class="container">
   <div class="row">
     <div>
       <div>
-      <% if @granny_offer&.photo.attached? %>
-        <%= cl_image_tag(@granny_offer.photo.key, :width => 200, :crop => "pad") %>
+      <% if @granny_offer&.user.photo.attached? %>
+        <%= cl_image_tag(@granny_offer.user.photo.key, :width => 200, :crop => "pad") %>
       <% end %>
       </div>
-      <h3>HEY! I AM <%= @granny_offer.first_name %> </h3>
-      <h3>FROM <%= @granny_offer.address %> </h3>
+      <h3>HEY! I AM <%= @granny_offer.user.first_name.capitalize %> </h3>
+      <h3>FROM <%= @granny_offer.user.address.capitalize %> </h3>
 
       <h3>MEET ME</h3>
-      <p><%= @granny_offer.introduction %></p>
+      <p><%= @granny_offer.user.introduction %></p>
 
       <h3>MY OFFER</h3>
         <%= @granny_offer.details %>
@@ -20,7 +20,7 @@
         <%= simple_form_for([@granny_offer, @booking]) do |f| %>
         <%= f.input :start_date %>
         <%= f.input :end_date %>
-        <%= f.submit "BOOK #{@granny_offer.name}'S OFFER"%>
+        <%= f.submit "BOOK #{@granny_offer.user.first_name.capitalize}'S OFFER"%>
         <% end %>
       <% else %>
         <p> class: 'btn btn-primary'"NOT AVAILABLE"</p>

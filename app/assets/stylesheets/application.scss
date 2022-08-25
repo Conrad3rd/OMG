@@ -10,3 +10,23 @@
 // Your CSS partials
 @import "components/index";
 // @import "pages/index";
+
+html, body {
+  margin-top: 0px;
+  padding-top: 0px;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+h1, h2, h3, p {
+  text-decoration: none !important;
+}
+
+a:-webkit-any-link {
+  text-decoration: none;
+}

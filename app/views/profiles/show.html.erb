@@ -20,7 +20,14 @@
           <li><%#  current_user.granny %></li>
         </ul>
 
-        <%= link_to 'Complete your profile', edit_profile_path(@user), class: "btn btn-primary" %>
+              
+         <% if current_user.first_name %>
+           <%= link_to 'Edit your profile', edit_profile_path(@user), class: "btn btn-success" %>
+         <% else%>
+           <%= link_to 'Complete your profile', edit_profile_path(@user), class: "btn btn-primary" %>
+         <% end %>
+        
+        
       </div>
     </div>
 
@@ -47,7 +54,7 @@
         </ul>
       </div>
 
-            <div class="card-profile">
+      <div class="card-profile">
         <h2>Past bookings</h2>
         <p>These are my past bookings</p>
         <ul>
@@ -57,12 +64,5 @@
         </ul>
       </div>
     </div>
-
-    <div class="col-4">
-
-    </div>
-
   </div>
-
-
 </div>

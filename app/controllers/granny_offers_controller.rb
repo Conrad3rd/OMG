@@ -13,6 +13,7 @@ class GrannyOffersController < ApplicationController
 
   def show
     @booking = Booking.new
+    # @granny_offer = GrannyOffer.find(params[:id])
 
     if @booking.save
       redirect_to user_path(@user), notice: "Booked!"
@@ -23,6 +24,12 @@ class GrannyOffersController < ApplicationController
 
   def new
     @granny_offer = GrannyOffer.new
+
+    if @grany_offer.save
+      redirect_to profile_path(current_user), notice: "YOUR OFFER WAS CREATED!"
+    else
+      render :show, status: :unprocessable_entity
+    end
   end
 
   def create
@@ -56,6 +63,6 @@ class GrannyOffersController < ApplicationController
   end
 
   def granny_offer_params
-    params.require(:granny_offer).permit(:hug_amount, :available, :details, :additional)
+    params.require(:granny_offer).permit(:hug_amount, :available, :details, :additional, :introduction, :first_name)
   end
 end

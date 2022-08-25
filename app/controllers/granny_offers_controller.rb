@@ -16,7 +16,7 @@ class GrannyOffersController < ApplicationController
     # @granny_offer = GrannyOffer.find(params[:id])
 
     if @booking.save
-      redirect_to profile_path(current_user), notice: "BOOKED!"
+      redirect_to user_path(@user), notice: "Booked!"
     else
       render :show, status: :unprocessable_entity
     end

@@ -15,7 +15,7 @@ class BookingsController < ApplicationController
 
   def create
     @booking = Booking.create(booking_params)
-    redirect_to profile_path(current_user)
+    redirect_to profile_path
   end
 
   def edit

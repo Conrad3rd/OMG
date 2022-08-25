@@ -1,12 +1,31 @@
-<div class="container" >
-<h1>Complete your profile</h1>
-  <%= simple_form_for @user do |f| %>
-    <%= f.input :first_name, as: :string %>
-    <%= f.input :last_name, as: :string %>
-    <%= f.input :address, as: :text %>
-    <%= f.input :age, as: :string %>
-    <%= f.input :introduction, as: :text %>
-    <%= f.input :photo, as: :file %>
-    <%= f.submit class: 'btn btn-primary' %>
-  <% end %>
+<div class="container">
+  <h1>Complete your profile</h1>
+</div>
+
+<div class="container">
+  <div class="container">
+    <div class="selector">
+      <div class="selector-item">
+          <input type="radio" id="radio1" name="selector" class="selector-item_radio" checked>
+            <label for="radio1" class="selector-item_label">Granny</label>
+      </div>
+      <div class="selecotr-item">
+          <input type="radio" id="radio2" name="selector" class="selector-item_radio">
+          <label for="radio2" class="selector-item_label">NOT Granny</label>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="container">
+    <%= simple_form_for @user do |f| %>
+      <%= f.input :first_name, as: :string %>
+      <%= f.input :last_name, as: :string %>
+      <%= f.input :address, as: :text %>
+      <%= f.input :age, as: :string %>
+      <%= f.input :photo, as: :file %>
+      <%= f.submit class: 'btn btn-primary' %>
+    <% end %>
+  </div>
 </div>

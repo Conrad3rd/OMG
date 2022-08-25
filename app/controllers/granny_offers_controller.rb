@@ -15,10 +15,10 @@ class GrannyOffersController < ApplicationController
     @booking = Booking.new
 
     if @booking.save
-        redirect_to user_path(@user), notice: "Booked!"
-      else
-        render :show, status: :unprocessable_entity
-      end
+      redirect_to user_path(@user), notice: "Booked!"
+    else
+      render :show, status: :unprocessable_entity
+    end
   end
 
   def new

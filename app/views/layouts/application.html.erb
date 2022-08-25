@@ -12,14 +12,16 @@
   </head>
 
   <body>
-    <div class="d-flex flex-column min-vh-100">
-      <%= render "shared/navbar" %>
+  <div class="wrapper">
+    <%= render "shared/navbar" %>
+    <div id="content-goes-here"> <!-- the id here is just to remind you -->
       <%# <p class="notice"><%= notice %>
       <%# <p class="alert"><%= alert %>
-      <div class="flex-grow-1">
-        <%= yield %>
-      </div>
+      <%= yield %>
+    </div>
+    <div id="footer-goes-here"> <!-- the id here is just to remind you -->
       <%= render 'shared/footer' %>
     </div>
+  </div>
   </body>
 </html>

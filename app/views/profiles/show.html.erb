@@ -1,19 +1,42 @@
 <div class="container">
-<h1>Profiles#show</h1>
-<p>Find me in app/views/profiles/show.html.erb</p>
+  <%# <h1>Profiles#show</h1>
+  <p>Find me in app/views/profiles/show.html.erb</p> %>
 
-  <%# <div class="row"> %>
+  <div class="row">
 
-      <p>My email <%=  current_user.email %></p>
-      <p>my firstname <%=  current_user.first_name %></p>
-      <p>my lastname <%=  current_user.last_name %></p>
-      <p>my address <%=  current_user.address %></p>
-      <p>my age <%=  current_user.age %></p>
-      <p>my introduction <%=  current_user.introduction %></p>
-      <p><%=  current_user.granny %></p>
-      <% if current_user.photo.attached? %>
-        <%= cl_image_tag(current_user.photo.key, :width => 200, :crop => "pad") %>
-      <% end %>
-      <%= link_to 'Complete your profile', edit_profile_path(@user), class: "btn btn-primary" %>
-    <%# </div> %>
+    <div class="col-4">
+      <div class="card-profile">
+        <h2>My profile</h2>
+        <% if current_user.photo.attached? %>
+          <%= cl_image_tag(current_user.photo.key, :width => 200, :crop => "pad") %>
+        <% end %>
+        <p>My email <%=  current_user.email %></p>
+        <p>my firstname <%=  current_user.first_name %></p>
+        <p>my lastname <%=  current_user.last_name %></p>
+        <p>my address <%=  current_user.address %></p>
+        <p>my age <%=  current_user.age %></p>
+        <p>my introduction <%=  current_user.introduction %></p>
+        <p><%=  current_user.granny %></p>
+
+        <%= link_to 'Complete your profile', edit_profile_path(@user), class: "btn btn-primary" %>
+      </div>
+    </div>
+
+    <div class="col-4">
+      <div class="card-profile">
+        <h2>Offer</h2>
+        <p>This is my offer to the user</p>
+      </div>
+    </div>
+
+        <div class="col-4">
+      <div class="card-profile">
+        <h2>Bookings</h2>
+        <p>This is my bookings to the user</p>
+      </div>
+    </div>
+
+  </div>
+
+
 </div>

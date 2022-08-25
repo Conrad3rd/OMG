@@ -1,0 +1,16 @@
+// Import page-specific CSS files here.
+// @import "home";
+
+.card-profile {
+  overflow: hidden;
+  // height: 120px;
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  // display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  border-radius: 10px;
+  padding-left: 5px;
+  padding-bottom: 10px;
+}

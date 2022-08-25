@@ -1,1 +1,16 @@
-<h1>views/show.html.erb</h1>
+<div class="container">
+<h1>YOUR BOOKING</h1>
+  <%# <div class="row"> %>
+
+  <div> <%= @granny_offer.user.photo %> </div>
+        <h3>HEY! I AM <%= @granny_offer.user.email %> </h3>
+        <h3>FROM <%= @granny_offer.user.email %> </h3>
+
+        <h3>MEET ME</h3>
+        <p><%= @granny_offer.user.email %></p>
+
+        <h3>MY OFFER</h3>
+          <%= @granny_offer.details %>
+        <h3>REWARD ME WITH <%= @granny_offer.hug_amount%> HUGS </h3>
+    <%# </div> %>
+</div>

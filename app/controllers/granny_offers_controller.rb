@@ -25,7 +25,7 @@ class GrannyOffersController < ApplicationController
     @granny_offer = GrannyOffer.new
 
     if @grany_offer.save
-    redirect_to profile_path(current_user), notice: "YOUR OFFER WAS CREATED!"
+      redirect_to profile_path(current_user), notice: "YOUR OFFER WAS CREATED!"
     else
       render :show, status: :unprocessable_entity
     end

@@ -16,7 +16,7 @@
             <li><strong>Introduction: </strong><%=  current_user.introduction %></li>
             <li><%#  current_user.granny %></li>
           </ul>
-          
+
           <% if current_user.first_name %>
             <%= link_to 'Edit your profile', edit_profile_path(@user), class: "btn btn-success" %>
           <% else%>
@@ -46,7 +46,7 @@
 <% else %>
   <div class="container">
     <div class="row h-100">
-      <div class="col-6">
+      <div class="col-4">
         <div class="card-profile flex-column">
           <h2>My profile</h2>
           <% if current_user.photo.attached? %>
@@ -61,6 +61,24 @@
             <li><strong>Introduction: </strong><%=  current_user.introduction %></li>
             <li><%#  current_user.granny %></li>
           </ul>
+        </div>
+      </div>
+
+      <div class="col-4">
+        <div class="card-profile">
+          <% if current_user&.granny_offer %>
+          <h2>My offer:</h2>
+          <ul>
+          <li><%= current_user.granny_offer.details %></li>
+          <li><%= current_user.granny_offer.hug_amount %> hugs</li>
+          <li><%= current_user.granny_offer.additional %></li>
+          </ul>
+          <%= link_to 'Edit', edit_granny_offer_path(current_user.granny_offer), class: "btn btn-primary btn-lg rounded-2" %>
+          <% else %>
+          <%= link_to 'Create a new offer!', new_granny_offer_path, class: "btn btn-primary btn-lg" %>
+          <% end %>
+        </div>
+      </div>
 
     <div class="col-4">
         <% if current_user&.granny?  %>
@@ -107,6 +125,5 @@
           <% end %>
         <% end %>
       </div>
-
   </div>
 <% end %>

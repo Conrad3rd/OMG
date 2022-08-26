@@ -16,7 +16,6 @@
     </div>
   </div>
 </div> %>
-
 <div class="container">
   <div class="container">
     <%= simple_form_for @user do |f| %>
@@ -24,9 +23,9 @@
       <%= f.input :last_name, as: :string %>
       <%= f.input :address, as: :text %>
       <%= f.input :age, as: :string %>
-      <%= f.input :introduction, as: :text %>
+      <%= f.input :introduction %>
       <%= f.input :photo, as: :file %>
-      <%= f.input :granny, class: "selector-item_label" %>
+      <%= f.input :granny, class: "selector-item_label", as: :boolean, checked_value: 'granny', unchecked_value: 'user' %>
       <%= f.submit class: 'btn btn-primary' %>
     <% end %>
   </div>

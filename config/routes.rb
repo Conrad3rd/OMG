@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   # root "articles#index"
   resources :users, only: [:update]
   resources :bookings
-  resources :granny_offers
+  # resources :granny_offers
   resources :profiles, only: %i[edit]
   get '/profile', to: 'profiles#show'
 end

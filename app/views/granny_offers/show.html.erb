@@ -16,7 +16,7 @@
           <%= @granny_offer&.details %>
         <h3>Hug amounts: <%= @granny_offer&.hug_amount%></h3>
 
-        <%= link_to 'Got to my profile', profile_path, class: 'btn btn-primary' %>
+        <%# link_to 'Got to my profile', profile_path, class: 'btn btn-primary' %>
         <% if @granny_offer&.available %>
           <%= simple_form_for([@granny_offer, @booking]) do |f| %>
           <%= f.input :start_date %>

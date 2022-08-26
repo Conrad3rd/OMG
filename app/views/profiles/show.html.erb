@@ -16,7 +16,7 @@
             <li><strong>Introduction: </strong><%=  current_user.introduction %></li>
             <li><%#  current_user.granny %></li>
           </ul>
-
+          
           <% if current_user.first_name %>
             <%= link_to 'Edit your profile', edit_profile_path(@user), class: "btn btn-success" %>
           <% else%>
@@ -40,27 +40,6 @@
           <% end %>
         </div>
       </div>
-
-      <div class="col-4">
-        <div class="card-profile">
-          <h2>Future bookings</h2>
-          <p>These are my future bookings</p>
-          <ul>
-            <li><strong>Esther Wynder: </strong>25.08.2022 - 28.08.2022</li>
-            <li><strong>Pauline Bewerunge: </strong>30.08.2022 - 01.09.2022</li>
-            <li><strong>Antonios Papatheodorour: </strong>05.09.2022 - 08.09.2022</li>
-          </ul>
-        </div>
-
-        <div class="card-profile">
-          <h2>Past bookings</h2>
-          <p>These are my past bookings</p>
-          <ul>
-            <li><strong>Antonios Papatheodorour: </strong>16.08.2022 - 18.08.2022</li>
-            <li><strong>Pauline Bewerunge: </strong>12.08.2022 - 14.08.2022</li>
-            <li><strong>Esther Wynder: </strong>02.07.2022 - 28.08.2022</li>
-          </ul>
-        </div>
       </div>
     </div>
   </div>
@@ -83,36 +62,51 @@
             <li><%#  current_user.granny %></li>
           </ul>
 
-          <% if current_user.first_name %>
-            <%= link_to 'Edit your profile', edit_profile_path(@user), class: "btn btn-success" %>
-          <% else%>
-            <%= link_to 'Complete your profile', edit_profile_path(@user), class: "btn btn-primary" %>
-          <% end %>
-        </div>
-      </div>
-    </div>
-    <div class="row h-100">
-      <div class="col-6">
-        <div class="card-profile">
-          <h2>Future bookings</h2>
-          <p>These are my future bookings</p>
-          <ul>
-            <li><strong>Esther Wynder: </strong>25.08.2022 - 28.08.2022</li>
-            <li><strong>Pauline Bewerunge: </strong>30.08.2022 - 01.09.2022</li>
-            <li><strong>Antonios Papatheodorour: </strong>05.09.2022 - 08.09.2022</li>
-          </ul>
-        </div>
+    <div class="col-4">
+        <% if current_user&.granny?  %>
+          <% current_user&.granny_offer&.bookings.each do |booking| %>
+            <div class="card-profile">
+           <h2>BOOKINGS</h2>
+            <h5>Hey, I am <%= booking&.granny_offer&.user&.first_name.capitalize %>!</h5>
+            <% if booking&.granny_offer&.user&.photo&.attached? %>
+              <%= cl_image_tag(booking&.granny_offer&.user&.photo.key, :crop => "pad", :class => "img_profile") %>
+            <% end %>
+            <p><strong>I booked you</strong><br>
+            <strong>from</strong> <%= booking&.start_date %> <strong>to</strong> <%= booking&.end_date %></p>
 
-        <div class="card-profile">
-          <h2>Past bookings</h2>
-          <p>These are my past bookings</p>
-          <ul>
-            <li><strong>Antonios Papatheodorour: </strong>16.08.2022 - 18.08.2022</li>
-            <li><strong>Pauline Bewerunge: </strong>12.08.2022 - 14.08.2022</li>
-            <li><strong>Esther Wynder: </strong>02.07.2022 - 28.08.2022</li>
-          </ul>
-        </div>
+            <p><strong>Contact me via</strong><br>
+            <%= booking&.granny_offer&.user&.email %></p>
+
+            <p><strong>Details</strong><br>
+            <%= booking&.granny_offer&.details %></p>
+            <p><strong>Hug amount:</strong> <%= booking&.granny_offer&.hug_amount %></p>
+
+            <p><strong>Learn more about<%= booking&.granny_offer&.user&.first_name.upcase %></strong><br>
+            <%= booking&.granny_offer&.user&.introduction %></p>
+          <% end %>
+        <% else %>
+          <% current_user&.bookings.each do |booking| %>
+          <div class="card-profile">
+           <h2>BOOKINGS</h2>
+            <h5>Hey, I am <%= booking&.granny_offer&.user&.first_name.capitalize %>!</h5>
+            <% if booking&.granny_offer&.user&.photo&.attached? %>
+              <%= cl_image_tag(booking&.granny_offer&.user&.photo.key, :crop => "pad", :class => "img_profile") %>
+            <% end %>
+            <p><strong>You booked me</strong><br>
+            <strong>from</strong> <%= booking&.start_date %> <strong>to</strong> <%= booking&.end_date %></p>
+            <p><strong>Contact me via</strong><br>
+            <%= booking&.granny_offer&.user&.email %></p>
+
+            <p><strong>Details</strong><br>
+            <%= booking&.granny_offer&.details %></p>
+            <p><strong>Hug amount:</strong> <%= booking&.granny_offer&.hug_amount %></p>
+
+            <p><strong>Learn more about <%= booking&.granny_offer&.user&.first_name.upcase %> </strong><br>
+            <%= booking&.granny_offer&.user&.introduction %></p>
+          </div>
+          <% end %>
+        <% end %>
       </div>
-    </div>
+
   </div>
 <% end %>

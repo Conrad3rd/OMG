@@ -1,5 +1,5 @@
 class GrannyOffersController < ApplicationController
-
+  skip_before_action :authenticate_user!, except: :new
   before_action :set_offer, only: %i[show edit update destroy]
   def index
     # Preventing SQL Injection and Database error for

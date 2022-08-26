@@ -19,13 +19,26 @@
           <li><%#  current_user.granny %></li>
         </ul>
 
-              
-         <% if current_user.first_name %>
-           <%= link_to 'Edit your profile', edit_profile_path(@user), class: "btn btn-success" %>
-         <% else%>
-           <%= link_to 'Complete your profile', edit_profile_path(@user), class: "btn btn-primary" %>
-         <% end %>
-        
+
+        <% if current_user.first_name %>
+          <%= link_to 'Edit your profile', edit_profile_path(@user), class: "btn btn-success" %>
+        <% else%>
+          <%= link_to 'Complete your profile', edit_profile_path(@user), class: "btn btn-primary" %>
+        <% end %>
+      </div>
+    <%# ------availability button %>
+      <div class="card-profile">
+        <form class="form-inline">
+        <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Availability</label>
+        <select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref">
+          <option selected>Choose...</option>
+          <option value="1">Available</option>
+          <option value="2">Unavailable</option>
+        </select>
+        <%# -------btn %>
+        <a href="/granny_offers" id="enter_button" class="glow-on-hover mt-2 mb-2" type="button">submit</a>
+        <%# ------end of btn %>
+        </form>
       </div>
     </div>
 

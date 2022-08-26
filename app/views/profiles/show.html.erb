@@ -28,18 +28,17 @@
 
       </div>
     </div>
-
     <div class="col-4">
       <div class="card-profile">
-        <h2>Offer</h2>
-        <h4>I'm good at:</h4>
-        <ul>
-          <li>take care of children</li>
-          <li>foot massage</li>
-          <li>table tennis partners</li>
-        </ul>
+        <% if current_user.granny_offer %>
+        <%= "Test" %>
+        <% else %>
+        <%= link_to 'Create a new offer!', new_granny_offer_path, class: "btn btn-primary" %>
+        <% end %>
       </div>
     </div>
+
+
 
     <div class="col-4">
       <div class="card-profile">

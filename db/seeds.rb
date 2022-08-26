@@ -34,7 +34,7 @@ granny_photos.each do |granny_photo|
                   introduction: Faker::TvShows::FamilyGuy.quote,
                   email: Faker::Internet.email,
                   password: 123456,
-                  granny: true
+                  granny: 1
                 )
   user.photo.attach(io: file, filename: "#{user.first_name}.png", content_type: "image/png")
   user.save!

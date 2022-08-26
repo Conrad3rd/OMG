@@ -31,9 +31,15 @@
     <div class="col-4">
       <div class="card-profile">
         <% if current_user.granny_offer %>
-        <%= "Test" %>
+        <h2>My offer:</h2>
+        <ul>
+        <li><%= current_user.granny_offer.details %></li>
+        <li><%= current_user.granny_offer.hug_amount %> hugs</li>
+        <li><%= current_user.granny_offer.additional %></li>
+        </ul>
+        <%= link_to 'Edit', new_granny_offer_path, class: "btn btn-primary btn-lg rounded-2" %>
         <% else %>
-        <%= link_to 'Create a new offer!', new_granny_offer_path, class: "btn btn-primary" %>
+        <%= link_to 'Create a new offer!', new_granny_offer_path, class: "btn btn-primary btn-lg" %>
         <% end %>
       </div>
     </div>

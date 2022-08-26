@@ -14,8 +14,14 @@ class BookingsController < ApplicationController
   end
 
   def create
-    @booking = Booking.create(booking_params)
-    redirect_to profile_path
+    @booking = Booking.new(booking_params)
+    @booking.user = current_user
+    @booking.granny_offer = GrannyOffer.find(params[:granny_offer_id])
+    if @booking.save
+      redirect_to profile_path
+    else
+      render 'granny_offers/show'
+    end
   end
 
   def edit

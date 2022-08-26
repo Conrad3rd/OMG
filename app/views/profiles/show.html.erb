@@ -32,35 +32,41 @@
     <div class="col-4">
       <div class="card-profile">
       <% if current_user&.granny && current_user&.granny_offer&.present? %>
-        <h4>YOUR OFFER DETAILS</h3>
+        <h2>YOUR OFFER DETAILS</h2>
           <%= current_user&.granny_offer&.details %>
         <h4> HOW MANY HUGS WOULD YOU LIKE TO RECEIVE: </h4>
           <%= current_user&.granny_offer&.hug_amount %>
         <h4> WHAT ELSE YOU MENTIONED: </h4>
           <%= current_user&.granny_offer&.additional %>
-       <% elsif current_user&.granny %>
-        <h3>YOU HAVEN'T CREATED AN OFFER!</h3>
-          <%= link_to 'CREATE AN OFFER', new_granny_offers(granny_offer), class: "btn btn-primary" %>
-        <% else %>
-          <h2>Youre not a granny</h2>
+        <%= link_to 'Edit your offer', edit_profile_path(@user), class: "btn btn-success" %>
+       <% else current_user&.granny %>
+
+        <h4>YOU HAVEN'T CREATED AN OFFER!</h4>
+          <%= link_to 'CREATE AN OFFER', new_granny_offer_path, class: "btn btn-primary" %>
       <% end %>
       </div>
     </div>
 
     <div class="col-4">
       <div class="card-profile">
-        <% if current_user&.granny?  %>
          <h2>BOOKINGS</h2>
+        <% if current_user&.granny?  %>
           <% current_user&.granny_offer&.bookings.each do |booking| %>
-            <%= booking&.user&.email %>
-            <%= booking&.start_date %>
-            <%= booking&.end_date %>
+            <% if booking&.granny_offer&.user&.photo&.attached? %>
+              <%= cl_image_tag(booking&.granny_offer&.user&.photo.key, :crop => "pad", :class => "img_profile") %>
+            <% end %>
+            <h4><%= booking&.granny_offer&.user&.email %></h4>
+            <h4><%= booking&.start_date %></h4>
+            <h4><%= booking&.end_date %></h4>
           <% end %>
         <% else %>
           <% current_user&.bookings.each do |booking| %>
-            <%= booking&.user&.email %>
-            <%= booking&.start_date %>
-            <%= booking&.end_date %>
+            <% if booking&.granny_offer&.user&.photo&.attached? %>
+              <%= cl_image_tag(booking&.granny_offer&.user&.photo.key, :crop => "pad", :class => "img_profile") %>
+            <% end %>
+            <h4><%= booking&.granny_offer&.user&.email %></h4>
+            <h4><%= booking&.start_date %></h4>
+            <h4><%= booking&.end_date %></h4>
           <% end %>
         <% end %>
 
@@ -68,4 +74,3 @@
     </div>
   </div>
 </div>
-

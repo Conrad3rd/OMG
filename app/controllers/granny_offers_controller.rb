@@ -1,5 +1,5 @@
 class GrannyOffersController < ApplicationController
-
+  skip_before_action :authenticate_user!, except: :new
   before_action :set_offer, only: %i[show edit update destroy]
   def index
     # Preventing SQL Injection and Database error for
@@ -24,12 +24,6 @@ class GrannyOffersController < ApplicationController
 
   def new
     @granny_offer = GrannyOffer.new
-
-    if @grany_offer.save
-      redirect_to profile_path(current_user), notice: "YOUR OFFER WAS CREATED!"
-    else
-      render :show, status: :unprocessable_entity
-    end
   end
 
   def create

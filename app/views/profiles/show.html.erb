@@ -1,54 +1,66 @@
-<% if current_user.granny? %>
+<% if current_user&.granny? %>
   <div class="container">
-  <div class="row h-100">
-    <div class="col-4">
-      <div class="card-profile flex-column">
-        <h2>My profile</h2>
-        <% if current_user.photo.attached? %>
-          <%= cl_image_tag(current_user.photo.key, :crop => "pad", :class => "img_profile") %>
-        <% end %>
+    <div class="row h-100">
+      <div class="col-4">
+        <div class="card-profile flex-column">
+          <h2>My profile</h2>
+          <% if current_user.photo.attached? %>
+            <%= cl_image_tag(current_user.photo.key, :width => 200, :crop => "pad") %>
+          <% end %>
 
-        <ul class="list-unstyled">
-          <li class="p-2"><i class="fa-regular fa-envelope"></i> <%=  current_user.email %></li>
-          <li class="p-2"><strong>Name: </strong><%=  current_user.first_name %> <%=  current_user.last_name %></li>
-          <li class="p-2"><i class="fa-solid fa-location-dot"></i> <%=  current_user.address %></li>
-          <li class="p-2"><strong>Age: </strong><%=  current_user.age %></li>
-          <li class="p-2"><strong>Introduction: </strong><%=  current_user.introduction %></li>
-          <li class="p-2"><%#  current_user.granny %></li>
-        </ul>
+          <ul class="list-unstyled">
+            <li><i class="fa-regular fa-envelope"></i> <%=  current_user.email %></li>
+            <li><strong>Name: </strong><%=  current_user.first_name %> <%=  current_user.last_name %></li>
+            <li><i class="fa-solid fa-location-dot"></i> <%=  current_user.address %></li>
+            <li><strong>Age: </strong><%=  current_user.age %></li>
+            <li><strong>Introduction: </strong><%=  current_user.introduction %></li>
+            <li><%#  current_user.granny %></li>
+          </ul>
 
-         <% if current_user.first_name %>
-           <%= link_to 'Edit your profile', edit_profile_path(@user), class: "btn btn-success" %>
-         <% else%>
-           <%= link_to 'Complete your profile', edit_profile_path(@user), class: "btn btn-primary" %>
-         <% end %>
+          <% if current_user.first_name %>
+            <%= link_to 'Edit your profile', edit_profile_path(@user), class: "btn btn-success" %>
+          <% else%>
+            <%= link_to 'Complete your profile', edit_profile_path(@user), class: "btn btn-primary" %>
+          <% end %>
+        </div>
+      </div>
+
+        <div class="col-4">
+        <div class="card-profile">
+          <% if current_user&.granny_offer %>
+          <h2>My offer:</h2>
+          <ul>
+          <li><%= current_user.granny_offer.details %></li>
+          <li><%= current_user.granny_offer.hug_amount %> hugs</li>
+          <li><%= current_user.granny_offer.additional %></li>
+          </ul>
+          <%= link_to 'Edit', edit_granny_offer_path(current_user.granny_offer), class: "btn btn-primary btn-lg rounded-2" %>
+          <% else %>
+          <%= link_to 'Create a new offer!', new_granny_offer_path, class: "btn btn-primary btn-lg" %>
+          <% end %>
+        </div>
       </div>
 
       <div class="col-4">
         <div class="card-profile">
-          <h2>Offer</h2>
-          <h4>I'm good at:</h4>
+          <h2>Future bookings</h2>
+          <p>These are my future bookings</p>
           <ul>
-            <li>take care of children</li>
-            <li>foot massage</li>
-            <li>table tennis partners</li>
+            <li><strong>Esther Wynder: </strong>25.08.2022 - 28.08.2022</li>
+            <li><strong>Pauline Bewerunge: </strong>30.08.2022 - 01.09.2022</li>
+            <li><strong>Antonios Papatheodorour: </strong>05.09.2022 - 08.09.2022</li>
           </ul>
         </div>
-      </div>
-    </div>
-    <div class="col-4">
-      <div class="card-profile">
-        <% if current_user.granny_offer %>
-        <h2>My offer:</h2>
-        <ul>
-        <li><%= current_user.granny_offer.details %></li>
-        <li><%= current_user.granny_offer.hug_amount %> hugs</li>
-        <li><%= current_user.granny_offer.additional %></li>
-        </ul>
-        <%= link_to 'Edit', edit_granny_offer_path(current_user.granny_offer), class: "btn btn-primary btn-lg rounded-2" %>
-        <% else %>
-        <%= link_to 'Create a new offer!', new_granny_offer_path, class: "btn btn-primary btn-lg" %>
-        <% end %>
+
+        <div class="card-profile">
+          <h2>Past bookings</h2>
+          <p>These are my past bookings</p>
+          <ul>
+            <li><strong>Antonios Papatheodorour: </strong>16.08.2022 - 18.08.2022</li>
+            <li><strong>Pauline Bewerunge: </strong>12.08.2022 - 14.08.2022</li>
+            <li><strong>Esther Wynder: </strong>02.07.2022 - 28.08.2022</li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>
@@ -61,6 +73,7 @@
           <% if current_user.photo.attached? %>
             <%= cl_image_tag(current_user.photo.key, :width => 200, :crop => "pad") %>
           <% end %>
+
           <ul class="list-unstyled">
             <li><i class="fa-regular fa-envelope"></i> <%=  current_user.email %></li>
             <li><strong>Name: </strong><%=  current_user.first_name %> <%=  current_user.last_name %></li>
@@ -89,14 +102,16 @@
             <li><strong>Antonios Papatheodorour: </strong>05.09.2022 - 08.09.2022</li>
           </ul>
         </div>
-      <div class="card-profile">
-        <h2>Past bookings</h2>
-        <p>These are my past bookings</p>
-        <ul class="list-unstyled">
-          <li><strong>Antonios Papatheodorour: </strong>16.08.2022 - 18.08.2022</li>
-          <li><strong>Pauline Bewerunge: </strong>12.08.2022 - 14.08.2022</li>
-          <li><strong>Esther Wynder: </strong>02.07.2022 - 28.08.2022</li>
-        </ul>
+
+        <div class="card-profile">
+          <h2>Past bookings</h2>
+          <p>These are my past bookings</p>
+          <ul>
+            <li><strong>Antonios Papatheodorour: </strong>16.08.2022 - 18.08.2022</li>
+            <li><strong>Pauline Bewerunge: </strong>12.08.2022 - 14.08.2022</li>
+            <li><strong>Esther Wynder: </strong>02.07.2022 - 28.08.2022</li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>

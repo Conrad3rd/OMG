@@ -3,7 +3,7 @@
     <div class="card-profile">
       <div class="p-5">
         <% if @granny_offer&.user.photo.attached? %>
-          <%= cl_image_tag(@granny_offer.user.photo.key, :crop => "pad", :class => "img_profile") %>
+          <%= cl_image_tag(@granny_offer.user.photo.key, :crop => "pad", :class => "img_granny") %>
         <% end %>
 
         <h3>Name: <%= @granny_offer.user.first_name.capitalize %> </h3>

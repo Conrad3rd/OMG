@@ -6,4 +6,5 @@ class User < ApplicationRecord
           :recoverable, :rememberable, :validatable
 
   has_one_attached :photo
+  has_one :granny_offer
 end

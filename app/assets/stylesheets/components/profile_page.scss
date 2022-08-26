@@ -16,8 +16,15 @@
   padding: 30px;
 }
 
+.img_profile {
+  width: 350px;
+  height: 350px;
+  // object-fit: cover;
+  margin-bottom: 20px;
+  border-radius: 8px;
+}
 
-ul.no-bullets {
+.list_unstyled {
   list-style-type: none; /* Remove bullets */
   padding: 0; /* Remove padding */
   margin: 0; /* Remove margins */

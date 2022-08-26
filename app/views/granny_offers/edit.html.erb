@@ -1,0 +1,15 @@
+<div class="container p-20">
+      <div class="bg-white rounded p-3 shadow">
+
+        <h3>Edit your offer</h3>
+        <%= simple_form_for @granny_offer do |f| %>
+        <h4> WHAT WOULD YOU LIKE TO OFFER? </h4>
+          <%= f.input :details, as: :text, placeholder: 'For example: I can come once a week and read some childrensbook with the kids' %>
+        <h4> HOW MANY HUGS WOULD YOU LIKE TO RECEIVE? </h4>
+          <%= f.input :hug_amount %>
+         <h4> ANYTHING ELSE? </h4>
+          <%= f.input :additional, as: :text %>
+          <%= f.submit "Update", class: 'btn btn-primary' %>
+        <% end %>
+      </div>
+</div>

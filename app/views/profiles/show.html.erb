@@ -49,24 +49,23 @@
 
     <div class="col-4">
       <div class="card-profile">
-        <h2>Future bookings</h2>
-        <p>These are my future bookings</p>
-        <ul>
-          <li><strong>Esther Wynder: </strong>25.08.2022 - 28.08.2022</li>
-          <li><strong>Pauline Bewerunge: </strong>30.08.2022 - 01.09.2022</li>
-          <li><strong>Antonios Papatheodorour: </strong>05.09.2022 - 08.09.2022</li>
-        </ul>
-      </div>
+        <% if current_user&.granny?  %>
+         <h2>BOOKINGS</h2>
+          <% current_user&.granny_offer&.bookings.each do |booking| %>
+            <%= booking&.user&.email %>
+            <%= booking&.start_date %>
+            <%= booking&.end_date %>
+          <% end %>
+        <% else %>
+          <% current_user&.bookings.each do |booking| %>
+            <%= booking&.user&.email %>
+            <%= booking&.start_date %>
+            <%= booking&.end_date %>
+          <% end %>
+        <% end %>
 
-      <div class="card-profile">
-        <h2>Past bookings</h2>
-        <p>These are my past bookings</p>
-        <ul>
-          <li><strong>Antonios Papatheodorour: </strong>16.08.2022 - 18.08.2022</li>
-          <li><strong>Pauline Bewerunge: </strong>12.08.2022 - 14.08.2022</li>
-          <li><strong>Esther Wynder: </strong>02.07.2022 - 28.08.2022</li>
-        </ul>
       </div>
     </div>
   </div>
 </div>
+
